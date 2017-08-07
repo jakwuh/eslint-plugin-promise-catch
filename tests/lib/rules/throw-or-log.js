@@ -54,12 +54,30 @@ ruleTester.run('throw-or-log', rule, {
         `promise.catch(function(error) {
             console.error(error);
         });`,
-        `promise.catch(error => console.error(error));`
+        `promise.catch(error => console.error(error));`,
+        `promise.catch(function(error) {
+            throw new CustomError('custom message', /* prev */ error);
+        });`,
+        `promise.catch(function(error) {
+            console.error(new CustomError('custom message', /* prev */ error));
+        });
+        `,
+        `promise.catch(function(error) {
+            console.error(new CustomError('custom message', /* prev */ prettify(2, error)));
+        });
+        `
     ].map(prettify(false)),
 
     invalid: [
         // ignoring error
         'promise.catch(err => "success")',
+        `promise.catch(function(err) {
+            throw new CustomError('custom message', error.message);
+        });`,
+        `promise.catch(function(err) {
+            console.error(new CustomError('custom message', error.message));
+        });
+        `,
         {
             code: 'promise.catch(({message}) => console.error(new Error(message)))',
             errors: [{
@@ -122,6 +140,14 @@ ruleTester.run('throw-or-log', rule, {
                })`,
             errors: [{
                 message: 'Only throwing error inside catch block is no-op.'
+            }]
+        },
+        {
+            code: `promise.catch((err) => {
+                   return Promise.reject(err);
+               })`,
+            errors: [{
+                message: 'Only rejecting Promise with error inside catch block is no-op.'
             }]
         }
     ].map(prettify(true))
