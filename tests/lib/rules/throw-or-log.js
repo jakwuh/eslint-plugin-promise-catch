@@ -149,6 +149,12 @@ ruleTester.run('throw-or-log', rule, {
             errors: [{
                 message: 'Only rejecting Promise with error inside catch block is no-op.'
             }]
+        },
+        {
+            code: `promise.catch((err) => Promise.reject(err))`,
+            errors: [{
+                message: 'Only rejecting Promise with error inside catch block is no-op.'
+            }]
         }
     ].map(prettify(true))
 });
