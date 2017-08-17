@@ -36,7 +36,7 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "promise-catch/rule-name": 2
+        "promise-catch/throw-or-log": 2
     }
 }
 ```
@@ -44,8 +44,3 @@ Then configure the rules you want to use under the rules section.
 ## Supported Rules
 
 * [throw-or-log](docs/rules/throw-or-log.md)
-
-
-
-
-

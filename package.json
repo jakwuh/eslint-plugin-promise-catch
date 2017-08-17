@@ -20,6 +20,10 @@
     "eslint": "~3.9.1",
     "mocha": "^3.1.2"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/jakwuh/eslint-plugin-promise-catch"
+  },
   "engines": {
     "node": ">=0.10.0"
   },
