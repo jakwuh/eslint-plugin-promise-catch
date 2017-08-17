@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-promise-catch",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "eslint plugin to sanitize promises catch block",
   "keywords": [
     "eslint",
@@ -21,8 +21,8 @@
     "mocha": "^3.1.2"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/jakwuh/eslint-plugin-promise-catch"
+    "type": "git",
+    "url": "https://github.com/jakwuh/eslint-plugin-promise-catch"
   },
   "engines": {
     "node": ">=0.10.0"
