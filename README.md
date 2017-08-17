@@ -33,10 +33,13 @@ Add `promise-catch` to the plugins section of your `.eslintrc` configuration fil
 
 Then configure the rules you want to use under the rules section.
 
-```json
+```js
 {
     "rules": {
-        "promise-catch/throw-or-log": 2
+        "promise-catch/throw-or-log": [2, {
+            "customLoggers": true
+            // allow any CallExpression to be a logging function
+        }]
     }
 }
 ```
